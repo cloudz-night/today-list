@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>today-list archive</title>
+    <link rel="stylesheet" href="archive.css">
+    <script src="main-script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header_left">
+            <button id="menu-button" onclick="menuToggle()">☰</button>
+            <h2>today-list</h2>
+        </div>
+        <div class="header_right">
+            <p>login/register</p>
+            <p>pfp</p>
+        </div>
+    </div>
+
+    <div class="menu" id="menu">
+        <button style="font-size: 70px;" onclick="menuToggle()" id="menu-close">&times;</button>
+        <ul>
+            <li><a href="main.html">today-list</a></li>
+            <li><a href="#">settings</a></li>
+        </ul>
+    </div>
+    <h2 style="text-align: center; font-size: 2.5em;">archived tasks</h2>
+    <div class="archive_container">
+        <ul id="archive_list">
+            <!-- Archived tasks will be dynamically added here -->
+        </ul>
+    </div>
+</body>
+</html>

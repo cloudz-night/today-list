@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>today-list</title>
+    <link rel="stylesheet" href="main-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main-script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header_left">
+            <button id="menu-button" onclick="menuToggle()">☰</button>
+            <h2>today-list</h2>
+        </div>
+        <div class="header_right">
+            <p id="login-label">login / register</p>
+            <input type="email" id="email" placeholder="email"><br>
+            <input type="password" id="password" placeholder="password"><br>
+            <input type="text" id="username" placeholder="username"><br>
+            <button id="signup-btn" onclick="signUp()">sign up</button>
+            <button id="login-btn" onclick="signIn()">log in</button>
+            <p id="status"></p>
+            <button id="logout-btn" onclick="logOut()" style="display:none;">log out</button>
+            <p id="username-display" style="display:none;">
+                <span id="username-text"></span>
+            </p>
+        </div>
+    </div>
+
+    <div class="menu" id="menu">
+        <button style="font-size: 70px;" onclick="menuToggle()" id="menu-close">&times;</button>
+        <ul>
+            <li><a href="archive.html">archive</a></li>
+            <li><a href="#">settings</a></li>
+        </ul>
+    </div>
+
+    <div class="add_task_container">
+        <input type="text" id="task_input" placeholder="add new task..." />
+        <input type="time" id="task_date" style="color-scheme: dark;"  placeholder="add date..." />
+        <button id="add_task_button" onclick="new_task()">add task</button>
+    </div>
+
+    <div class="task_container">
+        <ul id="task_list">
+            <!-- Tasks will be dynamically added here -->
+        </ul>
+    </div>
+</body>
+</html>
