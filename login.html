@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>today-list login</title>
+    <link rel="stylesheet" href="main-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main-script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header_left">
+            <button id="menu-button" onclick="menuToggle()">☰</button>
+            <h2>today-list</h2>
+        </div>
+        <div class="header_right">
+            <h2>login/register</h2>
+        </div>
+    </div>
+
+    <div class="menu" id="menu">
+        <button style="font-size: 70px;" onclick="menuToggle()" id="menu-close">&times;</button>
+        <ul>
+            <li><a href="index.html">today list</a></li>
+            <li><a href="archive.html">archive</a></li>
+            <li><a href="#">settings</a></li>
+        </ul>
+    </div>
+    <div class="login_container">
+        <h2>login or sign up</h2>
+        <div class="login_form">
+            <input type="email" id="email" placeholder="email"><br>
+            <input type="password" id="password" placeholder="password"><br>
+            <input type="text" id="username" placeholder="username"><br>
+            <button id="signup-btn" onclick="signUp()">sign up</button>
+            <button id="login-btn" onclick="signIn()">log in</button>
+            <p id="status"></p>
+            <button id="logout-btn" onclick="logOut()">log out</button>
+            <p id="username-display" style="display:none;">
+                <span id="username-text"></span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
