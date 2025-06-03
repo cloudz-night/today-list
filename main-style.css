@@ -7,6 +7,18 @@ body {
     color: white;
 }
 
+input, button {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    background-color: #C8C8C8;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -250,47 +262,6 @@ body {
     cursor: pointer;
 }
 
-.task-text {
-  cursor: pointer;
-  margin-left: 1.5em; /* Space for the checkmark */
-  display: inline-block;
-  position: relative;
-}
-
-.checkmark {
-  position: absolute;
-  top: 5px;
-  left: 0;
-  width: 7px;
-  height: 15px;
-  transform: rotate(45deg);
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  opacity: 0; /* hidden until marked complete */
-  transition: opacity 0.2s ease;
-}
-
-.completed .checkmark {
-  opacity: 1;
-}
-
-.completed .task-text {
-  text-decoration: line-through;
-}
-
-.checked::before {
-  content: '';
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 0.5em;
-}
-
 .task_container ul li {
     display: flex;
     align-items: center;
@@ -303,4 +274,18 @@ body {
     display: flex;
     gap: 4px;
     margin-left: auto;
+}
+
+.login_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    background-color: #191724;
+    width: 30%;
+    height: 40em;
+    margin: auto;
+    margin-top: 2%;
+    border: 0.2em, solid #959599;
+    border-radius: 15px;
 }
