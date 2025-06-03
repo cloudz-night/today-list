@@ -25,11 +25,11 @@ async function new_task() {
         return;
     }
 
-    // Insert task into Supabase
+    const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
     const { error } = await supabase
         .from('tasks')
         .insert([
-            { user_id: user.id, name: taskName, time: taskTime }
+            { user_id: user.id, name: taskName, time: taskTime, task_date: today }
         ]);
 
     if (error) {
@@ -48,10 +48,12 @@ async function load_tasks() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
+    const today = new Date().toISOString().slice(0, 10);
     const { data, error } = await supabase
         .from('tasks')
         .select('*')
         .eq('user_id', user.id)
+        .eq('task_date', today)
         .order('id', { ascending: false });
 
     const taskList = document.getElementById('task_list');
@@ -100,27 +102,11 @@ async function signIn() {
     let { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
         document.getElementById("status").textContent = error.message;
-        document.getElementById("username-display").style.display = "none";
         return;
     }
-    // Fetch username from profiles table
-    const { user } = data;
-    let { data: profile, error: profileSelectError } = await supabase.from('profiles').select('username').eq('id', user.id).single();
-    if (profileSelectError) {
-        console.error("Profile select error:", profileSelectError.message);
-    }
-    document.getElementById("status").textContent = "";
-    if (profile && profile.username) {
-        document.getElementById("username-text").textContent = profile.username;
-        document.getElementById("username-display").style.display = "block";
-        document.getElementById("logout-btn").style.display = "inline-block";
-    } else {
-        document.getElementById("username-text").textContent = "";
-        document.getElementById("username-display").style.display = "none";
-        document.getElementById("logout-btn").style.display = "none";
-    }
-    load_tasks();
+    document.getElementById("status").textContent = "Logged in!";
     updateAuthUI(true);
+    window.location.href = "index.html";
 }
 
 async function logOut() {
@@ -141,6 +127,10 @@ function updateAuthUI(isLoggedIn) {
     document.getElementById("login-btn").style.display = isLoggedIn ? "none" : "inline-block";
     document.getElementById("login-label").style.display = isLoggedIn ? "none" : "block";
     document.getElementById("logout-btn").style.display = isLoggedIn ? "inline-block" : "none";
+    const loginRegister = document.getElementById("login-register");
+    if (loginRegister) {
+        loginRegister.style.display = isLoggedIn ? "none" : "block";
+    }
 }
 
 async function toggleTaskCompleted(id, completed) {
